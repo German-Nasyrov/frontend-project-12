@@ -3,4 +3,4 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/120f22a138186a194545/maintainability)](https://codeclimate.com/github/OGGera/frontend-project-12/maintainability)
 ![Node CI](https://github.com//OGGera/frontend-project-12/actions/workflows/nodeci.yml/badge.svg)
 
-![App Link](https://frontend-project-12-production-0a01.up.railway.app/)
+[App Link](https://frontend-project-12-production-0a01.up.railway.app)
