@@ -3,13 +3,13 @@ import { I18nextProvider, initReactI18next } from 'react-i18next';
 import i18next from 'i18next';
 import resources from './locales/index';
 import App from './App';
-import './index.css';
 
 const Init = () => {
   i18next.use(initReactI18next).init({
     debug: true,
     lng: 'ru',
     resources,
+    fallbackLng: 'ru',
   });
 
   return (
