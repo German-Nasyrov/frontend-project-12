@@ -62,5 +62,6 @@ export default {
       network: 'Network Error',
       unknown: 'Unknown Error',
     },
+    darkMode: 'Dark mode',
   },
 };

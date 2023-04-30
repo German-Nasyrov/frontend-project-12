@@ -65,5 +65,6 @@ export default {
       network: 'Ошибка соединения',
       unknown: 'Неизвестная ошибка',
     },
+    darkMode: 'Темный режим',
   },
 };

@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import Login from '../images/Login.jpg';
 import routes from '../routes/routes.js';
-import useAuthorization from '../hooks/AuthorizationHook';
+import useAuthorization from '../hooks/AuthorizationHook.jsx';
 
 const LoginPage = () => {
   const authorization = useAuthorization();
@@ -116,7 +116,7 @@ const LoginPage = () => {
             <Card.Footer className="p-4">
               <div className="text-center">
                 <span>{t('login.newToChat')}</span>
-                <Link to={routes.pageNotFoundPath()}>{t('login.signup')}</Link>
+                <Link to={routes.signupPagePath()}>{t('login.signup')}</Link>
               </div>
             </Card.Footer>
           </Card>

@@ -1,0 +1,30 @@
+#change-lang-img {
+  position: absolute;
+  width: 24px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+#language-button {
+  margin-left: 10px;
+  position: relative;
+  width: 40px;
+  height: 38px;
+  border-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+  will-change: transform;
+}
+#language-button:hover {
+  transform: scale(1.1);
+}
+#language-button:active {
+  transform: scale(0.98);
+}
+#language-button:hover #change-lang-img, #language-button:active #change-lang-img {
+  backface-visibility: hidden;
+}
+
+/*# sourceMappingURL=styles.css.map */
