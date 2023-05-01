@@ -22,7 +22,7 @@ const MainPage = () => (
       <Route path={routes.loginPagePath()} element={<LoginPage />} />
       <Route path={routes.signupPagePath()} element={<SignUpPage />} />
       <Route path={routes.chatPagePath()} element={<PrivateOutlet />}>
-        <Route path={routes.chatPagePath()} element={<ChatPage />} />
+        <Route path="" element={<ChatPage />} />
       </Route>
       <Route path={routes.pageNotFoundPath()} element={<PageNotFound />} />
     </Routes>

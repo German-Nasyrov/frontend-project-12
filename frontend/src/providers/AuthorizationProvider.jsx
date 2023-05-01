@@ -2,32 +2,34 @@ import { useState, useMemo, useCallback } from 'react';
 import AuthorizationContext from '../contexts/AuthorizationContext.jsx';
 
 const AuthorizationProvider = ({ children }) => {
-  const initialState = JSON.parse(localStorage.getItem('userInfo'));
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(initialState ?? null);
+  const currentUser = JSON.parse(localStorage.getItem('user'));
+  const [user, setUser] = useState(currentUser ? { username: currentUser.username } : null);
 
-  const logIn = useCallback((response) => {
-    const data = JSON.stringify(response.data);
-    localStorage.removeItem('userInfo');
-    localStorage.setItem('userInfo', data);
-    setUser(JSON.parse(data));
-    setIsLoggedIn(true);
+  const logIn = useCallback((userData) => {
+    localStorage.setItem('user', JSON.stringify(userData));
+    setUser({ username: userData.username });
   }, []);
 
   const logOut = useCallback(() => {
-    localStorage.removeItem('userInfo');
-    setIsLoggedIn(false);
+    localStorage.removeItem('user');
     setUser(null);
+  }, []);
+
+  const getAuthorizationHeader = useCallback(() => {
+    const userData = JSON.parse(localStorage.getItem('user'));
+
+    return userData?.token ? { Authorization: `Bearer ${userData.token}` } : {};
   }, []);
 
   const getUserInfo = useCallback(() => user, [user]);
 
   const providedData = useMemo(() => ({
-    isLoggedIn,
+    user,
     logIn,
     logOut,
+    getAuthorizationHeader,
     getUserInfo,
-  }), [isLoggedIn, logIn, logOut, getUserInfo]);
+  }), [user, logIn, logOut, getAuthorizationHeader, getUserInfo]);
 
   return (
     <AuthorizationContext.Provider value={providedData}>

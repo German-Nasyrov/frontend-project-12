@@ -23,9 +23,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  useEffect(() => {
-    inputRef.current.focus();
-  }, []);
+  useEffect(() => { inputRef.current.focus(); }, []);
 
   const LoginSchema = yup.object().shape({
     username: yup.string().required(),

@@ -14,7 +14,7 @@ import useAuthorization from '../hooks/AuthorizationHook.jsx';
 const Messages = () => {
   const network = useNetwork();
   const chatApi = useSocket();
-  const auth = useAuthorization();
+  const authorization = useAuthorization();
   const messageScroll = useRef(null);
   const inputFocus = useRef();
   const { t } = useTranslation();
@@ -27,7 +27,7 @@ const Messages = () => {
   const filteredMessages = allMessages.filter(
     ({ channelId }) => channelId === activeChannelId,
   );
-  const { username } = auth.getUserInfo();
+  const { username } = authorization.getUserInfo();
 
   const f = useFormik({
     initialValues: {

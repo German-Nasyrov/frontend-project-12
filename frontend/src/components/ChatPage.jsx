@@ -13,36 +13,33 @@ import useAuthorization from '../hooks/AuthorizationHook.jsx';
 
 const ChatPage = () => {
   const { t } = useTranslation();
-  const auth = useAuthorization();
+  const authorization = useAuthorization();
   const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
-      axios.get(routes.dataPath(), {
-        headers: {
-          Authorization: `Bearer ${auth.getUserInfo().token}`,
-        },
-      }).then((responce) => {
-        const { channels, messages, currentChannelId } = responce.data;
-        const findCurrentChannel = channels.filter((channel) => channel.id === currentChannelId);
-        const [currentActiveChannel] = findCurrentChannel;
-        store.dispatch(setActiveChannel(currentActiveChannel.id));
-        store.dispatch(addChannels(channels));
-        store.dispatch(addMessages(messages));
-      }).catch((err) => {
-        switch (err.status) {
-          case 401:
-            auth.logOut();
-            break;
-          default:
-            toast.danger(t('errors.loadData'));
-            setTimeout(() => getData(), 5000);
-            break;
-        }
-      });
+      axios.get(routes.dataPath(), authorization.getAuthorizationHeader())
+        .then((responce) => {
+          const { channels, messages, currentChannelId } = responce.data;
+          const findCurrentChannel = channels.filter((channel) => channel.id === currentChannelId);
+          const [currentActiveChannel] = findCurrentChannel;
+          store.dispatch(setActiveChannel(currentActiveChannel.id));
+          store.dispatch(addChannels(channels));
+          store.dispatch(addMessages(messages));
+        }).catch((error) => {
+          switch (error.status) {
+            case 401:
+              authorization.logOut();
+              break;
+            default:
+              toast.danger(t('errors.loadData'));
+              setTimeout(() => getData(), 5000);
+              break;
+          }
+        });
     };
     getData();
-  }, [t, auth, navigate]);
+  }, [t, authorization, navigate]);
 
   return (
     <div className="container h-100 my-4 overflow-hidden rounded shadow">

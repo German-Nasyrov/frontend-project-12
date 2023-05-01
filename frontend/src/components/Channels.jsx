@@ -69,9 +69,7 @@ const Channels = () => {
   const { t } = useTranslation();
   const channels = useSelector((state) => state.channels.allChannels);
   const activeChannelId = useSelector((state) => state.channels.currentActiveId);
-
   const showModal = (type, item = null) => dispatch(onShow({ type, item }));
-
   const handleClick = (id) => dispatch(setActiveChannel(id));
 
   return (

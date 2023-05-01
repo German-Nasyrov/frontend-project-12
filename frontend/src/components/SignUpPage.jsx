@@ -11,7 +11,7 @@ import avatarImages from '../images/Login.jpg';
 
 const SignUpPage = () => {
   const { t } = useTranslation();
-  const auth = useAuthorization();
+  const authorization = useAuthorization();
   const [registrationFailed, setRegistrationFailed] = useState(false);
   const inputRef = useRef();
   const navigate = useNavigate();
@@ -45,11 +45,11 @@ const SignUpPage = () => {
       setRegistrationFailed(false);
 
       try {
-        const res = await axios.post(
-          routes.signupPath(),
-          { username: values.username, password: values.password },
-        );
-        auth.logIn(res.data);
+        const response = await axios.post(routes.signupPath(), {
+          username: values.username,
+          password: values.password,
+        });
+        authorization.logIn(response.data);
         navigate(routes.chatPagePath());
       } catch (error) {
         if (!error.isAxiosError) {
