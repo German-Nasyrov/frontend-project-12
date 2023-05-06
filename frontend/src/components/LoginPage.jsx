@@ -11,6 +11,7 @@ import {
 } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
+import { useRollbar } from '@rollbar/react';
 import Login from '../images/Login.jpg';
 import routes from '../routes/routes.js';
 import useAuthorization from '../hooks/AuthorizationHook.jsx';
@@ -21,6 +22,7 @@ const LoginPage = () => {
   const inputRef = useRef();
   const location = useLocation();
   const navigate = useNavigate();
+  const rollbar = useRollbar();
   const { t } = useTranslation();
 
   useEffect(() => { inputRef.current.focus(); }, []);
@@ -40,11 +42,12 @@ const LoginPage = () => {
       setAuthorizationFailed(false);
 
       try {
-        const res = await axios.post(routes.loginPath(), values);
-        authorization.logIn(res.data);
+        const result = await axios.post(routes.loginPath(), values);
+        authorization.logIn(result.data);
         const { from } = location.state || { from: { pathname: routes.chatPagePath() } };
         navigate(from);
       } catch (error) {
+        rollbar.error(error);
         console.error(error);
 
         if (!error.isAxiosError) {

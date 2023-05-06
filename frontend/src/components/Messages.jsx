@@ -29,20 +29,20 @@ const Messages = () => {
   );
   const { username } = authorization.getUserInfo();
 
-  const f = useFormik({
+  const formik = useFormik({
     initialValues: {
       currentMessage: '',
     },
     onSubmit: () => {
-      const filteredMessage = filter.clean(f.values.currentMessage);
+      const filteredMessage = filter.clean(formik.values.currentMessage);
       chatApi.sendMessage({ body: filteredMessage, channelId: activeChannelId, username })
-        .then(() => f.resetForm({ currentMessage: '' }))
+        .then(() => formik.resetForm({ currentMessage: '' }))
         .catch(() => toast.error(t('errors.toastifyMessage')));
     },
   });
 
   const inputClassNames = cn('input-group', {
-    'has-validation': f.values.currentMessage.length < 1,
+    'has-validation': formik.values.currentMessage.length < 1,
   });
 
   useEffect(() => {
@@ -75,7 +75,7 @@ const Messages = () => {
           <Form
             noValidate=""
             className="py-1 border rounded-2"
-            onSubmit={f.handleSubmit}
+            onSubmit={formik.handleSubmit}
           >
             <Form.Group className={inputClassNames}>
               <Form.Control
@@ -87,14 +87,14 @@ const Messages = () => {
                     : t('errors.network')
                 }
                 className="border-0 p-0 ps-2 form-control"
-                value={network.isOnline ? f.values.currentMessage : t('errors.network')}
+                value={network.isOnline ? formik.values.currentMessage : t('errors.network')}
                 ref={inputFocus}
-                onChange={f.handleChange}
+                onChange={formik.handleChange}
                 autoComplete="off"
               />
               <button
                 type="submit"
-                disabled={!f.values.currentMessage || !network.isOnline}
+                disabled={!formik.values.currentMessage || !network.isOnline}
                 style={{ borderColor: 'white' }}
                 className="btn btn-group-vertical"
               >

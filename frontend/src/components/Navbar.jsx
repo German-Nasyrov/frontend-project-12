@@ -21,7 +21,6 @@ const Navbar = () => {
     <BootstrapNavbar bg="white" expand="lg" className="shadow-sm">
       <div className="container">
         <BootstrapNavbar.Brand as={Link} to="/">{t('hexletChat')}</BootstrapNavbar.Brand>
-        {!!user && <Button onClick={logOut}>{t('logout')}</Button>}
         <div className="form-check form-switch">
           <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{t('darkMode')}</label>
           <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onClick={() => handleChangeTheme()} />
@@ -29,6 +28,7 @@ const Navbar = () => {
         <Button type="button" variant="white" id="language-button" onClick={() => handleChangeLanguage()}>
           <img alt="Change language" src={language.activeLanguage === 'ru' ? en : ru} id="change-lang-img" />
         </Button>
+        {!!user && <Button onClick={logOut}>{t('logout')}</Button>}
       </div>
     </BootstrapNavbar>
   );

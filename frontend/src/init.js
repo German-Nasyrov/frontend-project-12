@@ -12,14 +12,16 @@ import resources from './locales/index.js';
 import store from './slices/index.js';
 import App from './App.js';
 
-const rollbarConfig = {
-  accessToken: process.env.REACT_APP_ROLLBAR_TOKEN,
-  payload: { environment: 'production' },
-  captureUncaught: true,
-  captureUnhandledRejections: true,
-};
-
 export default async (socket) => {
+  const isProduction = process.env.NODE_ENV === 'production';
+
+  const rollbarConfig = {
+    enabled: isProduction,
+    accessToken: process.env.ROLLBAR_TOKEN,
+    captureUncaught: true,
+    captureUnhandledRejections: true,
+  };
+
   const defaultLanguage = JSON.parse(localStorage.getItem('currentLanguage')) ?? 'ru';
   const i18n = i18next.createInstance();
 

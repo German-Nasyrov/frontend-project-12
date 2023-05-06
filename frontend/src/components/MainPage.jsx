@@ -9,6 +9,7 @@ import ChatPage from './ChatPage.jsx';
 import SignUpPage from './SignUpPage.jsx';
 import PageNotFound from './PageNotFound.jsx';
 import routes from '../routes/routes.js';
+import Modals from './Modals.jsx';
 
 const PrivateOutlet = () => {
   const authorization = useAuthorization();
@@ -26,6 +27,7 @@ const MainPage = () => (
       </Route>
       <Route path={routes.pageNotFoundPath()} element={<PageNotFound />} />
     </Routes>
+    <Modals />
   </div>
 );
 

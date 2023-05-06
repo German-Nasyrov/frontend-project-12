@@ -39,8 +39,8 @@ const RenderChannel = ({
             <span className="visually-hidden">{t('modals.channelManagement')}</span>
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item onClick={() => showModal('removing', { id })}>{t('channels.dropdownToggle.delete')}</Dropdown.Item>
-            <Dropdown.Item onClick={() => showModal('renaming', { id, name, removable })}>{t('channels.dropdownToggle.rename')}</Dropdown.Item>
+            <Dropdown.Item onClick={() => showModal('removing', { id })}>{t('channels.remove')}</Dropdown.Item>
+            <Dropdown.Item onClick={() => showModal('renaming', { id, name, removable })}>{t('channels.rename')}</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </Nav.Item>
@@ -92,7 +92,7 @@ const Channels = () => {
             <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
           </svg>
-          <span className="visually-hidden">{t('modals.addModal.add')}</span>
+          <span className="visually-hidden">{t('modals.add')}</span>
         </button>
       </div>
       <Nav
