@@ -18,7 +18,7 @@ const ChatPage = () => {
 
   useEffect(() => {
     const getData = async () => {
-      axios.get(routes.dataPath(), authorization.getAuthorizationHeader())
+      axios.get(routes.dataPath(), { headers: authorization.getAuthorizationHeader() })
         .then((responce) => {
           const { channels, messages, currentChannelId } = responce.data;
           const findCurrentChannel = channels.filter((channel) => channel.id === currentChannelId);

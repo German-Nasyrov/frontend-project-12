@@ -21,11 +21,9 @@ const RenderChannel = ({
             variant="white"
             id="channel-button-left"
             data-changecolour="hover"
-            className={`w-100 rounded-0 text-start text-truncate btn ${
-              activeChannelId === id ? 'btn-secondary' : ''
-            }`}
+            className={`w-100 rounded-0 text-start text-truncate btn ${activeChannelId === id ? 'btn-secondary' : ''}`}
           >
-            <span className="me-1"># </span>
+            <span className="me-1">#</span>
             {name}
           </Button>
           <Dropdown.Toggle
@@ -52,9 +50,7 @@ const RenderChannel = ({
           variant="white"
           id="channel-button"
           data-changecolour="hover"
-          className={`w-100 rounded-0 text-start btn ${
-            activeChannelId === id ? 'btn-secondary' : ''
-          }`}
+          className={`w-100 rounded-0 text-start btn ${activeChannelId === id ? 'btn-secondary' : ''}`}
         >
           <span className="me-1">#</span>
           {name}

@@ -4,10 +4,10 @@ import { useFormik } from 'formik';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import * as yup from 'yup';
 import useAuthorization from '../hooks/AuthorizationHook.jsx';
 import routes from '../routes/routes.js';
-import avatarImages from '../images/Login.jpg';
+import avatarImages from '../images/Avatar.jpg';
+import { signUpSchema } from '../schemas/schemas.js';
 
 const SignUpPage = () => {
   const { t } = useTranslation();
@@ -17,33 +17,11 @@ const SignUpPage = () => {
   const navigate = useNavigate();
   useEffect(() => { inputRef.current.focus(); }, []);
 
-  const validationSchema = yup.object().shape({
-    username: yup
-      .string()
-      .trim()
-      .required('signup.required')
-      .min(3, 'signup.usernameConstraints')
-      .max(20, 'signup.usernameConstraints'),
-    password: yup
-      .string()
-      .trim()
-      .required('signup.required')
-      .min(6, 'signup.passMin'),
-    confirmPassword: yup
-      .string()
-      .test('confirmPassword', 'signup.mustMatch', (value, context) => value === context.parent.password),
-  });
-
   const formik = useFormik({
-    initialValues: {
-      username: '',
-      password: '',
-      confirmPassword: '',
-    },
-    validationSchema,
+    initialValues: { username: '', password: '', confirmPassword: '' },
+    validationSchema: signUpSchema,
     onSubmit: async (values) => {
       setRegistrationFailed(false);
-
       try {
         const response = await axios.post(routes.signupPath(), {
           username: values.username,
@@ -52,16 +30,12 @@ const SignUpPage = () => {
         authorization.logIn(response.data);
         navigate(routes.chatPagePath());
       } catch (error) {
-        if (!error.isAxiosError) {
-          throw error;
-        }
-
+        if (!error.isAxiosError) throw error;
         if (error.response.status === 409) {
           setRegistrationFailed(true);
           inputRef.current.select();
           return;
         }
-
         throw error;
       }
     },
@@ -73,13 +47,7 @@ const SignUpPage = () => {
         <div className="col-12 col-md-8 col-xxl-6">
           <div className="card shadow-sm">
             <div className="card-body d-flex flex-column flex-md-row justify-content-around align-items-center p-5">
-              <div>
-                <img
-                  src={avatarImages}
-                  className="rounded-circle"
-                  alt={t('signup.header')}
-                />
-              </div>
+              <div><img src={avatarImages} className="rounded-circle" alt={t('signup.header')} /></div>
               <Form onSubmit={formik.handleSubmit} className="w-50">
                 <h1 className="text-center mb-4">{t('signup.header')}</h1>
                 <Form.Group className="form-floating mb-3">
@@ -91,10 +59,8 @@ const SignUpPage = () => {
                     name="username"
                     id="username"
                     autoComplete="username"
-                    isInvalid={
-                      (formik.errors.username && formik.touched.username)
-                      || registrationFailed
-                    }
+                    isInvalid={(formik.errors.username && formik.touched.username)
+                      || registrationFailed}
                     required
                     ref={inputRef}
                   />
@@ -113,10 +79,8 @@ const SignUpPage = () => {
                     name="password"
                     id="password"
                     aria-describedby="passwordHelpBlock"
-                    isInvalid={
-                      (formik.errors.password && formik.touched.password)
-                      || registrationFailed
-                    }
+                    isInvalid={(formik.errors.password && formik.touched.password)
+                      || registrationFailed}
                     required
                     autoComplete="new-password"
                   />
@@ -134,10 +98,8 @@ const SignUpPage = () => {
                     placeholder={t('signup.mustMatch')}
                     name="confirmPassword"
                     id="confirmPassword"
-                    isInvalid={
-                      (formik.errors.confirmPassword && formik.touched.confirmPassword)
-                      || registrationFailed
-                    }
+                    isInvalid={(formik.errors.confirmPassword && formik.touched.confirmPassword)
+                      || registrationFailed}
                     required
                     autoComplete="new-password"
                   />
@@ -145,7 +107,6 @@ const SignUpPage = () => {
                     {registrationFailed ? t('signup.alreadyExists') : t(formik.errors.confirmPassword)}
                   </Form.Control.Feedback>
                   <Form.Label htmlFor="confirmPassword">{t('signup.confirm')}</Form.Label>
-
                 </Form.Group>
                 <Button type="submit" variant="outline-primary" className="w-100">{t('signup.submit')}</Button>
               </Form>

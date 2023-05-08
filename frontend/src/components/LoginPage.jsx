@@ -3,7 +3,6 @@ import {
   React, useState, useRef, useEffect,
 } from 'react';
 import { useFormik } from 'formik';
-import * as yup from 'yup';
 import cn from 'classnames';
 import axios from 'axios';
 import {
@@ -15,6 +14,7 @@ import { useRollbar } from '@rollbar/react';
 import Login from '../images/Login.jpg';
 import routes from '../routes/routes.js';
 import useAuthorization from '../hooks/AuthorizationHook.jsx';
+import { loginSchema } from '../schemas/schemas.js';
 
 const LoginPage = () => {
   const authorization = useAuthorization();
@@ -27,17 +27,9 @@ const LoginPage = () => {
 
   useEffect(() => { inputRef.current.focus(); }, []);
 
-  const LoginSchema = yup.object().shape({
-    username: yup.string().required(),
-    password: yup.string().required(),
-  });
-
   const formik = useFormik({
-    initialValues: {
-      username: '',
-      password: '',
-    },
-    validationSchema: LoginSchema,
+    initialValues: { username: '', password: '' },
+    validationSchema: loginSchema,
     onSubmit: async (values) => {
       setAuthorizationFailed(false);
 
@@ -65,9 +57,7 @@ const LoginPage = () => {
     },
   });
 
-  const inputClassNames = cn('form-control', {
-    'is-invalid': formik.errors.username || formik.errors.password || authorizationFailed,
-  });
+  const inputClassNames = cn('form-control', { 'is-invalid': formik.errors.username || formik.errors.password || authorizationFailed });
 
   return (
     <Container fluid className="h-100">

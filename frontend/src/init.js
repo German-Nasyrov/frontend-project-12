@@ -17,7 +17,7 @@ export default async (socket) => {
 
   const rollbarConfig = {
     enabled: isProduction,
-    accessToken: process.env.ROLLBAR_TOKEN,
+    accessToken: process.env.REACT_APP_ROLLBAR_TOKEN,
     captureUncaught: true,
     captureUnhandledRejections: true,
   };

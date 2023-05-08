@@ -13,11 +13,9 @@ const RemoveChannel = ({ onHide, modalInfo }) => {
   const { t } = useTranslation();
 
   const formik = useFormik({
-    initialValues: {
-      removingChannelId: modalInfo.item.id,
-    },
+    initialValues: { removingChannelId: modalInfo.item.id },
     onSubmit: () => {
-      chatApi.sendRemovedChannel({ id: formik.values.removingChannelId })
+      chatApi.sendAction('removeChannel', { id: formik.values.removingChannelId })
         .then(() => {
           toast.success(t('channels.removed'));
           onHide();
@@ -26,16 +24,12 @@ const RemoveChannel = ({ onHide, modalInfo }) => {
     },
   });
 
-  useEffect(() => {
-    inputRef.current.focus();
-  }, []);
+  useEffect(() => inputRef.current.focus(), []);
 
   return (
     <Modal show centered>
       <Modal.Header closeButton onHide={onHide}>
-        <Modal.Title className="p-1">
-          {t('modals.remove')}
-        </Modal.Title>
+        <Modal.Title className="p-1">{t('modals.remove')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <p className="lead p-1">
