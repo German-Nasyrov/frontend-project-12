@@ -63,9 +63,7 @@ const RenameChannel = ({ onHide, modalInfo }) => {
             />
             <Form.Label className="visually-hidden" htmlFor="newChannelName">{t('modals.channelName')}</Form.Label>
             {formik.touched.newChannelName && formik.errors.newChannelName && (
-            <div className="invalid-feedback mb-2">
-              {t(formik.errors.newChannelName)}
-            </div>
+              <div className="invalid-feedback mb-2">{t(formik.errors.newChannelName)}</div>
             )}
           </Form.Group>
           <Form.Group className="d-flex justify-content-start mt-3">

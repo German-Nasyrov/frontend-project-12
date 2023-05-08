@@ -16,12 +16,12 @@ const RenderChannel = ({
       <Nav.Item className="w-100" key={id} data-changecolour="hover">
         <Dropdown role="group" className="d-flex dropdown btn-group">
           <Button
-            onClick={() => handleClick(id)}
-            type="button"
-            variant="white"
-            id="channel-button-left"
-            data-changecolour="hover"
             className={`w-100 rounded-0 text-start text-truncate btn ${activeChannelId === id ? 'btn-secondary' : ''}`}
+            type="button"
+            id="channel-button-left"
+            onClick={() => handleClick(id)}
+            data-changecolour="hover"
+            variant="white"
           >
             <span className="me-1">#</span>
             {name}
