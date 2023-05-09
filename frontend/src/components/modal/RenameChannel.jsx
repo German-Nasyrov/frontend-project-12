@@ -42,12 +42,12 @@ const RenameChannel = ({ onHide, modalInfo }) => {
   useEffect(() => { inputRef.current.select(); }, []);
 
   return (
-    <Modal show centered>
-      <Modal.Header closeButton onHide={onHide}>
+    <Modal centered show>
+      <Modal.Header onHide={onHide} closeButton>
         <Modal.Title className="p-1">{t('modals.rename')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form onSubmit={formik.handleSubmit} noValidate>
+        <form noValidate onSubmit={formik.handleSubmit}>
           <Form.Group>
             <Form.Control
               required

@@ -48,16 +48,16 @@ const AddChannel = ({ onHide }) => {
         <form onSubmit={formik.handleSubmit} noValidate>
           <Form.Group>
             <Form.Control
+              data-testid="input-body"
+              name="newChannelName"
+              id="newChannelName"
+              autoComplete="off"
               required
               className={`mb-2 form-control ${formik.errors.newChannelName ? 'is-invalid' : ''}`}
-              ref={inputRef}
               onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+              ref={inputRef}
               value={network.isOnline ? formik.values.newChannelName : t('errors.network')}
-              data-testid="input-body"
-              autoComplete="off"
-              id="newChannelName"
-              name="newChannelName"
+              onBlur={formik.handleBlur}
             />
             <Form.Label className="visually-hidden" htmlFor="newChannelName">{t('modals.channelName')}</Form.Label>
             {formik.touched.newChannelName && formik.errors.newChannelName && (
