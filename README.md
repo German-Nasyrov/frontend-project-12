@@ -22,10 +22,10 @@
 • i18next
 ```
 
-## Made with the help of:
+## Some features:
 
 ```sh
-• There is support for Russian and English
+• There is support for Russian and English languages
 
 • You can create and delete channels and send messages within channels
 ```
