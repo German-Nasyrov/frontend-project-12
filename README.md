@@ -3,4 +3,41 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/120f22a138186a194545/maintainability)](https://codeclimate.com/github/OGGera/frontend-project-12/maintainability)
 ![Node CI](https://github.com//OGGera/frontend-project-12/actions/workflows/nodeci.yml/badge.svg)
 
-[App Link](https://frontend-project-12-production-0a01.up.railway.app)
+## Description:
+[Secret Chat](https://frontend-project-12-production-0a01.up.railway.app) is an analogue of Slack chat (a very simplified version)
+
+## Made with the help of:
+
+```sh
+• React/Redux
+
+• AJAX
+
+• REST
+
+• websockets
+
+• Formik
+
+• i18next
+```
+
+## Made with the help of:
+
+```sh
+• There is support for Russian and English
+
+• You can create and delete channels and send messages within channels
+```
+
+## Installation:
+
+```sh
+All commands should run from root:
+
+# Install the dependencies and run build
+$ make install
+
+# Start frontend and backend in root folder
+$ make start
+```
