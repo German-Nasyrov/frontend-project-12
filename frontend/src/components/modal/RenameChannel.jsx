@@ -63,12 +63,12 @@ const RenameChannel = ({ onHide, modalInfo }) => {
             />
             <Form.Label className="visually-hidden" htmlFor="newChannelName">{t('modals.channelName')}</Form.Label>
             {formik.touched.newChannelName && formik.errors.newChannelName && (
-              <div className="invalid-feedback mb-2">{t(formik.errors.newChannelName)}</div>
+              <div className="mb-2 invalid-feedback">{t(formik.errors.newChannelName)}</div>
             )}
           </Form.Group>
-          <Form.Group className="d-flex justify-content-start mt-3">
-            <Button type="submit" variant={network.isOnline ? 'primary' : 'danger'} disabled={!network.isOnline}>{t('modals.submit')}</Button>
-            <Button onClick={() => onHide()} type="button" variant="secondary" className="ms-2">{t('modals.cancel')}</Button>
+          <Form.Group className="justify-content-start d-flex mt-3">
+            <Button variant={network.isOnline ? 'primary' : 'danger'} disabled={!network.isOnline} type="submit">{t('modals.submit')}</Button>
+            <Button className="ms-2" type="button" variant="secondary" onClick={() => onHide()}>{t('modals.cancel')}</Button>
           </Form.Group>
         </form>
       </Modal.Body>
