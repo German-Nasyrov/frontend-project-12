@@ -25,8 +25,6 @@ const LoginPage = () => {
   const rollbar = useRollbar();
   const { t } = useTranslation();
 
-  useEffect(() => { inputRef.current.focus(); }, []);
-
   const formik = useFormik({
     initialValues: { username: '', password: '' },
     validationSchema: loginSchema,
@@ -58,6 +56,8 @@ const LoginPage = () => {
   });
 
   const inputClassNames = cn('form-control', { 'is-invalid': formik.errors.username || formik.errors.password || authorizationFailed });
+
+  useEffect(() => { inputRef.current.focus(); }, []);
 
   return (
     <Container fluid className="h-100">

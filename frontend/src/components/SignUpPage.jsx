@@ -15,7 +15,6 @@ const SignUpPage = () => {
   const [registrationFailed, setRegistrationFailed] = useState(false);
   const inputRef = useRef();
   const navigate = useNavigate();
-  useEffect(() => { inputRef.current.focus(); }, []);
 
   const formik = useFormik({
     initialValues: { username: '', password: '', confirmPassword: '' },
@@ -40,6 +39,8 @@ const SignUpPage = () => {
       }
     },
   });
+
+  useEffect(() => { inputRef.current.focus(); }, []);
 
   return (
     <div className="container-fluid h-100">
