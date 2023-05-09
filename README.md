@@ -11,11 +11,11 @@
 ```sh
 • React/Redux
 
+• websockets
+
 • AJAX
 
 • REST
-
-• websockets
 
 • Formik
 
