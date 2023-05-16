@@ -11,7 +11,7 @@ const AuthorizationProvider = ({ children }) => {
   }, []);
 
   const logOut = useCallback(() => {
-    localStorage.clear();
+    localStorage.removeItem('user');
     setUser(null);
   }, []);
 
