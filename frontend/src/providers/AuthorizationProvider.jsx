@@ -17,20 +17,18 @@ const AuthorizationProvider = ({ children }) => {
 
   const getAuthorizationHeader = useCallback(() => {
     const userData = JSON.parse(localStorage.getItem('user'));
-
     return userData?.token ? { Authorization: `Bearer ${userData.token}` } : {};
   }, []);
 
   const getUserInfo = useCallback(() => user, [user]);
 
   const providedData = useMemo(() => ({
-    currentUser,
     user,
     logIn,
     logOut,
     getAuthorizationHeader,
     getUserInfo,
-  }), [user, logIn, logOut, getAuthorizationHeader, getUserInfo, currentUser]);
+  }), [user, logIn, logOut, getAuthorizationHeader, getUserInfo]);
 
   return (
     <AuthorizationContext.Provider value={providedData}>
