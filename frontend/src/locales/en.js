@@ -30,7 +30,7 @@ export default {
       header: 'Login',
     },
     modals: {
-      add: 'Add channel',
+      add: '+',
       required: 'Required',
       min: 'Must be 3 to 20 characters',
       max: 'Must be 3 to 20 characters',
@@ -41,7 +41,7 @@ export default {
       confirmation: 'Are you sure?',
       confirm: 'Confirm',
       rename: 'Rename channel',
-      channelName: 'Chanel name',
+      channelName: 'Channel name',
       editChannelName: 'New channel name',
     },
     hexletChat: 'Hexlet Chat',
