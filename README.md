@@ -1,3 +1,17 @@
+# Secret chat
+
+## System requirments:
+
+```sh
+• Node-version: [16.x, 17.x, 18.x]
+
+• React: 18.x,
+
+• Stable internet connection;
+
+• Internet browser except Internet Explorer;
+```
+
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/OGGera/frontend-project-12/workflows/hexlet-check/badge.svg)](https://github.com/OGGera/frontend-project-12/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/120f22a138186a194545/maintainability)](https://codeclimate.com/github/OGGera/frontend-project-12/maintainability)
