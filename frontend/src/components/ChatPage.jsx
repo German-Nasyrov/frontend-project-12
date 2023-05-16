@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect } from 'react';
+import { animateScroll } from 'react-scroll';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -26,10 +27,15 @@ const ChatPage = () => {
           store.dispatch(setActiveChannel(currentActiveChannel.id));
           store.dispatch(addChannels(channels));
           store.dispatch(addMessages(messages));
-        }).catch((error) => {
-          switch (error.status) {
+          animateScroll.scrollToTop({ containerId: 'channels-box', delay: 0, duration: 0 });
+        })
+        .catch((error) => {
+          switch (error.response?.status) {
             case 401:
+            case 500:
+            case 409:
               authorization.logOut();
+              navigate(routes.loginPagePath());
               break;
             default:
               toast.danger(t('errors.loadData'));
