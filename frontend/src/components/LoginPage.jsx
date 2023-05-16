@@ -92,7 +92,6 @@ const LoginPage = () => {
                     placeholder={t('login.password')}
                     type="password"
                     id="password"
-                    ref={inputRef}
                     className={inputClassNames}
                     value={formik.values.password}
                     onChange={formik.handleChange}
