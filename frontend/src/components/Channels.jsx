@@ -40,7 +40,7 @@ const RenderChannel = ({
             data-changecolour="hover"
             className={`flex-grow-0 btn ${activeChannelId === id ? 'btn-secondary' : ''}`}
           >
-            <span className="visually-hidden">{t('modals.channelManagement')}</span>
+            <span className="visually-hidden">{t('channels.menu')}</span>
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item onClick={() => showModal('removing', { id })}>{t('channels.remove')}</Dropdown.Item>
