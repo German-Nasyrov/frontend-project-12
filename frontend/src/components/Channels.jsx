@@ -1,4 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { animateScroll } from 'react-scroll';
 import {
   Dropdown, Button, Nav, Col,
 } from 'react-bootstrap';
@@ -11,6 +13,10 @@ const RenderChannel = ({
 }) => {
   const { t } = useTranslation();
   const { id, name, removable } = channel;
+  useEffect(() => {
+    animateScroll.scrollToBottom({ containerId: 'channels-box', delay: 0, duration: 0 });
+  }, []);
+
   return (
     removable ? (
       <Nav.Item className="w-100" key={id} data-changecolour="hover">

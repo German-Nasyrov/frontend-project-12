@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { animateScroll } from 'react-scroll';
 import { Modal, Button } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
@@ -19,6 +20,7 @@ const RemoveChannel = ({ onHide, modalInfo }) => {
         .then(() => {
           toast.success(t('channels.removed'));
           onHide();
+          animateScroll.scrollToTop({ containerId: 'channels-box', delay: 0, duration: 0 });
         })
         .catch(() => toast.danger(t('errors.toastifyRemove')));
     },
