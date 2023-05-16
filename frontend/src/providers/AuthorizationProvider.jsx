@@ -11,7 +11,7 @@ const AuthorizationProvider = ({ children }) => {
   }, []);
 
   const logOut = useCallback(() => {
-    localStorage.removeItem('user');
+    localStorage.clear();
     setUser(null);
   }, []);
 
@@ -24,12 +24,13 @@ const AuthorizationProvider = ({ children }) => {
   const getUserInfo = useCallback(() => user, [user]);
 
   const providedData = useMemo(() => ({
+    currentUser,
     user,
     logIn,
     logOut,
     getAuthorizationHeader,
     getUserInfo,
-  }), [user, logIn, logOut, getAuthorizationHeader, getUserInfo]);
+  }), [user, logIn, logOut, getAuthorizationHeader, getUserInfo, currentUser]);
 
   return (
     <AuthorizationContext.Provider value={providedData}>
