@@ -18,7 +18,7 @@
 ![Linter AirBnB](https://github.com//OGGera/frontend-project-12/actions/workflows/nodejs.yml/badge.svg)
 
 ## Description:
-[Secret Chat](https://frontend-project-12-production-0a01.up.railway.app) is an analogue of Slack chat (a very simplified version)
+[Hexlet Chat](https://frontend-project-12-production-0a01.up.railway.app) is an analogue of Slack chat (a very simplified version)
 
 ## Made with the help of:
 

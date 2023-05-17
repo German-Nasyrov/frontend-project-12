@@ -1,4 +1,4 @@
-name: Linter AirBnB
+name: Build check on different node.js versions
 
 on:
   push:
