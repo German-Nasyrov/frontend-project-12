@@ -1,4 +1,4 @@
-# Secret chat
+# Hexlet chat
 
 ## System requirments:
 
