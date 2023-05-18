@@ -30,7 +30,7 @@ export default {
       header: 'Login',
     },
     modals: {
-      add: 'Add channel',
+      add: '+',
       required: 'Required',
       min: 'Must be 3 to 20 characters',
       max: 'Must be 3 to 20 characters',
