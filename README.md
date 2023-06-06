@@ -17,7 +17,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/120f22a138186a194545/maintainability)](https://codeclimate.com/github/OGGera/frontend-project-12/maintainability)
 
 ## Description:
-[Hexlet Chat](https://frontend-project-12-production-0a01.up.railway.app) is an analogue of Slack chat (a very simplified version)
+[Hexlet Chat](https://frontend-project-12-production-acdd.up.railway.app) is an analogue of Slack chat (a very simplified version)
 
 ## Made with the help of:
 
