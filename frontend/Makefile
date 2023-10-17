@@ -1,5 +1,5 @@
 install:
-	npm ci
+	npm ci && npm run build
 
 start:
 	npm start

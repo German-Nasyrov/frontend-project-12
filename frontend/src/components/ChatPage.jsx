@@ -38,7 +38,7 @@ const ChatPage = () => {
               navigate(routes.loginPagePath());
               break;
             default:
-              toast.danger(t('errors.loadData'));
+              toast.error(t('errors.loadData'));
               setTimeout(() => getData(), 5000);
               break;
           }
