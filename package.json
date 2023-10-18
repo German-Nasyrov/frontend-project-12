@@ -13,7 +13,9 @@
   "author": "German Nasyrov",
   "license": "ISC",
   "dependencies": {
-    "@hexlet/chat-server": "^1.1.6"
+    "@hexlet/chat-server": "^1.1.6",
+    "fastify-cors": "^6.1.0",
+    "http-proxy-middleware": "^2.0.6"
   },
   "engines": {
     "node": "18.x"
