@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom/client';
 import { io } from 'socket.io-client';
-import server from '@hexlet/code/server.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,5 +12,4 @@ const app = async () => {
   root.render(vdom);
 };
 
-server();
 app();
