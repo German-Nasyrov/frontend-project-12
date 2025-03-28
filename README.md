@@ -14,7 +14,7 @@
 
 ### Hexlet tests and maintainability:
 [![Actions Status](https://github.com/German-Nasyrov/frontend-project-12/workflows/hexlet-check/badge.svg)](https://github.com/German-Nasyrov/frontend-project-12/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/120f22a138186a194545/maintainability)](https://codeclimate.com/github/German-Nasyrov/frontend-project-12/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/120f22a138186a194545/maintainability)](https://codeclimate.com/github/OGGera/frontend-project-12/maintainability)
 
 ## Description:
 Hexlet Chat is an analogue of Slack chat (a very simplified version)
